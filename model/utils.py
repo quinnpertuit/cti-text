@@ -66,7 +66,7 @@ def plot_proj(embedding, lbs):
     for i in range(len(np.unique(lbs))):
         plt.plot(embedding[:, 0][lbs == i], embedding[:, 1][lbs == i], '.', alpha=0.5,
                  label='cluster {}: {:.2f}%'.format(i, counter[i] / n * 100))
-    plt.legend()
+    #plt.legend()
 
 
 def visualize(model):
@@ -81,7 +81,7 @@ def visualize(model):
     vec_umap = reducer.fit_transform(model.vec[model.method])
     print('Calculating UMAP projection. Done!')
     plot_proj(vec_umap, model.cluster_model.labels_)
-    dr = '/mnt/cti/docs/images/{}/{}'.format(model.method, model.id)
+    dr = 'docs/images/{}/{}'.format(model.method, model.id)
     if not os.path.exists(dr):
         os.makedirs(dr)
     plt.savefig(dr + '/2D_vis')
@@ -107,7 +107,7 @@ def get_wordcloud(model, token_lists, topic):
     plt.imshow(wordcloud)
     plt.axis("off")
     plt.tight_layout(pad=0)
-    dr = '/mnt/cti/docs/images/{}/{}'.format(model.method, model.id)
+    dr = 'docs/images/{}/{}'.format(model.method, model.id)
     if not os.path.exists(dr):
         os.makedirs(dr)
     plt.savefig(dr + '/Topic' + str(topic) + '_wordcloud')

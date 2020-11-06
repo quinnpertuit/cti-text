@@ -17,6 +17,7 @@ def preprocess(docs, samp_size=None):
 
     print('Preprocessing raw texts ...')
     n_docs = len(docs)
+    samp_size = n_docs
     sentences = []  # sentence level preprocessed
     token_lists = []  # word level preprocessed
     idx_in = []  # index of sample selected
